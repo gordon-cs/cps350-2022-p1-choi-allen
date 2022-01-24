@@ -1,20 +1,57 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+/**
+ * Simple React Native App to demonstrate static layout of weather data.
+ */
 
-export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+ import React, { Component } from 'react';
+ import {
+   Text,
+   View,
+ } from 'react-native';
+ 
+ import WeatherNow from './src/WeatherNow';
+ 
+ export default class StaticWeatherApp extends Component {
+   render() {
+     let weatherData = {
+       "locationName": "Wenham, MA",
+       "locationTime": "18:00 PM",
+       "temp": "25°F",
+       "sum": "snowing",
+       "first": "Justin",
+       "last": "Choi",
+       "currently": {
+         "time":1579810570,
+         "summary":"Mostly Cloudy",
+         "icon":"partly-cloudy-day",
+         "temperature":39.42,
+       },
+       "daily": {
+         "data": [
+           {
+             "time":1579755600,
+             "summary":"Partly cloudy throughout the day.",
+             "icon":"partly-cloudy-day",
+             "temperatureHigh":39.98,
+             "temperatureHighTime":1579809240,
+             "temperatureLow":29.86,
+             "temperatureLowTime":1579860420,
+           },
+           {
+             "time":1579842000,
+             "summary":"Mostly cloudy throughout the day.",
+             "icon":"partly-cloudy-day",
+             "temperatureHigh":42.96,
+             "temperatureHighTime":1579891320,
+             "temperatureLow":36.12,
+             "temperatureLowTime":1579924560,
+           },
+         ]
+       }
+     };
+     return (
+         <View>
+           <WeatherNow weatherData={weatherData} />
+         </View>
+     )
+   }
+ }
