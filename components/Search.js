@@ -1,5 +1,5 @@
 import React, { useState  } from 'react'
-import { View, TextInput, StyleSheet, Dimensions, Button } from 'react-native';
+import { View, TextInput, StyleSheet, Dimensions, TouchableOpacity, Text } from 'react-native';
 
 export default function Search({ fetchWeatherData }) {
 
@@ -12,7 +12,9 @@ export default function Search({ fetchWeatherData }) {
                 value={cityName}
                 onChangeText={(text) => setCityName(text)}
             />
-            <Button onPress = {() => fetchWeatherData(cityName)} title = 'Search'></Button>
+            <TouchableOpacity onPress = {() => fetchWeatherData(cityName)} >
+                <Text>Search</Text>
+            </TouchableOpacity>
         </View>
     )
 }

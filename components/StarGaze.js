@@ -9,17 +9,26 @@ const StarGaze = ({weatherData}) => {
 const Forecast = ({data}) => {
     const nightTemp = data.temp.night;
     const border = 10;
-    console.log(nightTemp)
-    return (
-        <View style = {styles.starContainer}>
-            <Text style = {styles.starGazeContainer}>Tonight is not a good day to go stargazing</Text>
-        </View>
-    )
+    if (nightTemp < 20) {
+        return (
+            <View style = {styles.starContainer}>
+                <Text style = {styles.starGazeContainer}>Tonight is not a good day to go stargazing</Text>
+            </View>
+        )  
+    }
+    else {
+        return (
+            <View style = {styles.starContainer}>
+                <Text style = {styles.starGazeContainer}>Tonight is a good day to go stargazing</Text>
+            </View>
+        )
+    }
+
 }
 const styles = StyleSheet.create({
     starGazeContainer: {    
         fontSize: 20,
-        color: "white",
+        color: "#2E2E2E",
         fontWeight: "bold",
         textAlign: "center",
     },

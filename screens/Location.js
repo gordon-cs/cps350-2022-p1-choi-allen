@@ -2,9 +2,6 @@ import React, { useState, useEffect } from 'react';
 import {View, TextInput, StyleSheet, PermissionsAndroid, Text} from 'react-native'
 import Search from '../components/Search'
 import Weather from '../components/Weather'
-import DateTime from '../screens/DateTime'
-import WeatherScroll from '../components/WeatherScroll'
-import StarGaze from '../components/StarGaze'
 const API_KEY = "f72a62fdc81edb510f24105a177c8fee";
 
 function CityWise() {
@@ -53,7 +50,7 @@ function CityWise() {
 
     return (
         <View style={styles.container}>
-            <Weather weatherData={weatherData} fetchWeatherData={fetchWeatherData}  />
+            <Weather weatherData={weatherData} fetchWeatherData={fetchWeatherData} />
         </View>
     );
 }
@@ -61,7 +58,7 @@ function CityWise() {
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: 'white',
+      backgroundColor: '#7B6198',
       alignItems: 'center',
       justifyContent: 'center',
     },

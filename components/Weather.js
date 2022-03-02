@@ -1,24 +1,19 @@
-import React, { useState, useEffect } from 'react'
-import { View, Text, StyleSheet, Image, Dimensions, StatusBar, ScrollView, SafeAreaView} from 'react-native';
+import React from 'react'
+import { View, Text, StyleSheet, Image, Dimensions, ScrollView, SafeAreaView} from 'react-native';
 import Search from './Search';
-import Header from './Header';
 
 export default function Weather({ weatherData, fetchWeatherData }) {
 
     const { weather,
-            visibility,
-            weather: [{description, icon}],
+            weather: [{icon}],
             name,
-            main: { temp, humidity, feels_like },
-            wind: { speed },
-            sys: { sunrise, sunset },
+            main: { temp},
     } = weatherData;
+    const nightTemp = weatherData.main.temp;
     const [{ main }] = weather;
-    
-    
-    return (
-        <SafeAreaView style={styles.container}>
-            
+    if (nightTemp < -6) {
+      return (
+        <SafeAreaView style={styles.container}>    
                 <Search fetchWeatherData={fetchWeatherData} />
                 <ScrollView>
                 <View style={{alignItems: 'center' }}>
@@ -32,13 +27,39 @@ export default function Weather({ weatherData, fetchWeatherData }) {
                         uri: `http://openweathermap.org/img/wn/${icon}@4x.png`,
                         }}
                     />
-                    <Text style={styles.currentTemp}>{temp} °C</Text>
+                    <Text style={styles.currentTemp}>{Math.floor((temp * 9/5) + 32)}°F</Text>
                     
                 </View>
-                <Text style={styles.currentDescription}>Not an ideal day to go stargazing</Text>
+                <Text style={styles.currentDescription}>Tonight is not a good day to go stargazing</Text>
                 </ScrollView>
         </SafeAreaView>
     )
+    }
+    else {
+      return (
+        <SafeAreaView style={styles.container}>    
+                <Search fetchWeatherData={fetchWeatherData} />
+                <ScrollView>
+                <View style={{alignItems: 'center' }}>
+                    <Text style={styles.title}>{name}</Text>
+                    
+                </View>
+                <View style={styles.current}>
+                <Image
+                        style={styles.largeIcon}
+                        source={{
+                        uri: `http://openweathermap.org/img/wn/${icon}@4x.png`,
+                        }}
+                    />
+                    <Text style={styles.currentTemp}>{Math.floor((temp * 9/5) + 32)}°F</Text>
+                    
+                </View>
+                <Text style={styles.currentDescription}>Tonight is a good day to go stargazing</Text>
+                </ScrollView>
+        </SafeAreaView>
+    )
+    }
+
 }
 
 const styles = StyleSheet.create({

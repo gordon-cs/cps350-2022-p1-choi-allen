@@ -11,10 +11,10 @@ const Future = ({data}) => {
 
                     idx !== 0 &&  <FutureItem key={idx} forecast={data}/>
                 ))
-
                 :
                 <View/>
             }
+            <Text>               </Text>
         </View>
     )
 }
@@ -25,8 +25,9 @@ const FutureItem = ({forecast}) => {
         <View style = {styles.futureforecast}>
             <Text  style={styles.day}>{moment(forecast.dt * 1000).format('ddd')}</Text>
             <Image source = {img} style = {styles.image}/>
-            <Text style = {styles.temp}>Night - {forecast.temp.night}&#176;C</Text>
-            <Text style = {styles.temp}>Day - {forecast.temp.day}&#176;C</Text>
+            <Text style = {styles.temp}>Day: {Math.floor(forecast.temp.day)}&#176;F</Text>
+            <Text style = {styles.temp}>Night: {Math.floor(forecast.temp.night)}&#176;F</Text>
+
         </View>
     )
 }
@@ -53,13 +54,13 @@ const styles = StyleSheet.create( {
         padding: 10,
         textAlign: "center",
         borderRadius: 50,
-        fontWeight: "300",
+        fontWeight: "500",
         marginBottom: -15,
     },
     temp: {
         fontSize: 16,
         color: "black",
-        fontWeight: "300",
+        fontWeight: "400",
         textAlign: "center",
     },   
 })

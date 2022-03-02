@@ -58,10 +58,7 @@ state = {
         if (data != null) {
             return (
                 <View style = {{flex: 1, backgroundColor : "#7B6198"}}>
-                    
-
-                    <StarGaze weatherData = {data.daily}/>
-                    
+                    <StarGaze weatherData = {data.daily}/>              
                     <View>
 
                     </View>
@@ -73,8 +70,7 @@ state = {
         } else {
          return(
             <View style = {{flex : 1, justifyContent : 'center', alignItems : 'center', backgroundColor: '#7B6198'}}>
-            <Text style = {{fontSize: 50, margin: 80, color: 'white'}}>Night Sky</Text>
-            <Text style = {{fontSize: 50, marginTop: 100, color: 'white'}}>Loading...</Text>
+            <Text style = {{fontSize: 50, margin: 80, color: 'white'}}>Loading...</Text>
              </View>
          )   
         }

@@ -12,17 +12,15 @@ const WeatherScroll = ({weatherData}) => {
 }
 
 const CurrentTemp = ({data}) => {
-
-
     const img = {uri: 'http://openweathermap.org/img/wn/'+ data.weather[0].icon +'@4x.png'}
-    return (
-        
+    return (        
         <View style = {styles.currentTempContainer}>
             <Image source = {img} style = {styles.image} />
             <View style = {styles.other}>
                 <Text style = {styles.day}>{moment(data.dt * 1000).format('dddd')}</Text>
-                <Text style = {styles.temp}>Night - {data.temp.night}&#176;C</Text>
-                <Text style = {styles.temp}>Day - {data.temp.day}&#176;C</Text>
+                <Text style = {styles.temp}>Day: {Math.floor(data.temp.day)}°F</Text>
+                <Text style = {styles.temp}>Night: {Math.floor(data.temp.night)}°F</Text>
+                
             </View>
         </View>
         
@@ -32,8 +30,7 @@ const styles = StyleSheet.create({
     scrollView: {
         backgroundColor: "#7B6198  ",
         padding: 30,
-        flex: 0.5,
-        
+        flex: 0.5,        
     },
     image: {
         width: 150,
@@ -55,14 +52,14 @@ const styles = StyleSheet.create({
         padding: 10,
         textAlign: "center",
         borderRadius: 50,
-        fontWeight: "300",
+        fontWeight: "500",
         marginBottom: 15,
         
     },
     temp: {
         fontSize: 16,
         color: "black",
-        fontWeight: "300",
+        fontWeight: "400",
         textAlign: "center"
     },
     other: {
